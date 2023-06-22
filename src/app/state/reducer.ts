@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { CountriesState } from '../models/state.models';
 import * as actions from './actions';
-import { updateSelectedCities } from './actions';
 
 export const initialState: CountriesState = {
     labels: {
