@@ -1,27 +1,16 @@
-# Pinnakl
+Task
+We are grateful to you for taking this test. This is a great opportunity for you to showcase your skills to our team. Please do your very best.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Fetch data with countries and cities from Internet (for example here)
+2. Country Multi-Select - Create a multi-select dropdown that allows users to select countries.
+3. City Multi-Select - Create a second multi-select, which allows users to select cities. These are cities that are in countries picked in Country multi-select.
+4. Create 4 text labels with the following calculations:
+Num of selected countries / total countries in response
+Num of cities available to select (in multiselect) / total cities in response.
+Num of selected cities / number of available cities to select (in multiselect).
+Num of selected cities / total cities in response.
+Details:
+Text labels should update in the real time from multi-select selection (and no buttons)
+UI is not so important as code.
+If you find the task to be easy, and you want do more you can add possibility to manage list of countries, cities; use any storage or do any other improvements and additions which you think can display your talents
+You are free to use any libs/packages/sandboxes etc
