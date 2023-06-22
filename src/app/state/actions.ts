@@ -1,9 +1,11 @@
 import { createAction, props } from '@ngrx/store';
-import { Country } from '../models/state.models';
-// Countries Actions
+import { City, Country } from '../models/state.models';
+
 export const LoadDataActionLabel = '[Countries] Load Data';
 export const SaveDataActionLabel = '[Countries] Save Data';
-
+export const setTotalCountriesLabelName = '[Text Labels] Set Total Countries';
+export const setTotalCitiesLabelName = '[Text Labels] Set Total Sities';
+// Countries Actions
 export const loadData = createAction(LoadDataActionLabel);
 export const saveData = createAction(
     SaveDataActionLabel,
@@ -12,6 +14,15 @@ export const saveData = createAction(
 export const updateSelectedCountries = createAction(
     '[Countries] Update Selected',
     props<{ selectedCountries: Country[] }>()
+);
+// Cities Actions
+export const updateSelectedCities = createAction(
+    '[Cities] Update Selected',
+    props<{ selectedCities: City[] }>()
+);
+export const updateCities = createAction(
+    '[Cities] Update',
+    props<{ cities: City[] }>()
 );
 // Labels Actions
 export const setSelectedCountriesLabel = createAction(

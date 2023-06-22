@@ -1,29 +1,50 @@
 import { createReducer, on } from '@ngrx/store';
-import { CountriesState, TextLabels } from '../models/state.models';
+import { CountriesState } from '../models/state.models';
 import * as actions from './actions';
+import { updateSelectedCities } from './actions';
 
 export const initialState: CountriesState = {
     labels: {
-        selectedCountries: undefined,
-        totalCountries: undefined,
-        availableCities: undefined,
-        totalCities: undefined,
-        selectedCities: undefined
+        selectedCountries: 0,
+        totalCountries: 0,
+        availableCities: 0,
+        totalCities: 0,
+        selectedCities: 0
     },
     countries: undefined,
-    selectedCountries: undefined
+    cities: undefined,
+    selectedCountries: [],
+    selectedCities: []
 };
 
 const _countriesReducer = createReducer(initialState,
-    on(actions.saveData, (state: CountriesState, update: Partial<CountriesState>) => {
-        console.log("Update: ", update);
-        return ({ ...state, ...update })}),
-    on(actions.updateSelectedCountries, (state: CountriesState, update: Partial<CountriesState>) => ({ ...state, ...update })),
-    on(actions.setSelectedCountriesLabel, (state: CountriesState, update: Partial<TextLabels>) => ({ ...state, labels: { ...state.labels, update } })),
-    on(actions.setTotalCountriesLabel, (state: CountriesState, update: Partial<TextLabels>) => ({ ...state, labels: { ...state.labels, update } })),
-    on(actions.setAvailableCitiesLabel, (state: CountriesState, update: Partial<TextLabels>) => ({ ...state, labels: { ...state.labels, update } })),
-    on(actions.setTotalCitiesLabel, (state: CountriesState, update: Partial<TextLabels>) => ({ ...state, labels: { ...state.labels, update } })),
-    on(actions.setSelectedCitiesLabel, (state: CountriesState, update: Partial<TextLabels>) => ({ ...state, labels: { ...state.labels, update } })),
+    on(actions.saveData, (state: CountriesState, { countries }) =>
+        ({ ...state, countries })
+    ),
+    on(actions.updateCities, (state: CountriesState, { cities }) =>
+        ({ ...state, cities })
+    ),
+    on(actions.updateSelectedCountries, (state: CountriesState, { selectedCountries }) =>
+        ({ ...state, selectedCountries })
+    ),
+    on(actions.updateSelectedCities, (state: CountriesState, { selectedCities }) =>
+        ({ ...state, selectedCities })
+    ),
+    on(actions.setSelectedCountriesLabel, (state: CountriesState, { selectedCountries }) =>
+        ({ ...state, labels: { ...state.labels, selectedCountries } })
+    ),
+    on(actions.setTotalCountriesLabel, (state: CountriesState, { totalCountries }) =>
+        ({ ...state, labels: { ...state.labels, totalCountries } })
+    ),
+    on(actions.setAvailableCitiesLabel, (state: CountriesState, { availableCities }) =>
+        ({ ...state, labels: { ...state.labels, availableCities } })
+    ),
+    on(actions.setTotalCitiesLabel, (state: CountriesState, { totalCities }) =>
+        ({ ...state, labels: { ...state.labels, totalCities } })
+    ),
+    on(actions.setSelectedCitiesLabel, (state: CountriesState, { selectedCities }) =>
+        ({ ...state, labels: { ...state.labels, selectedCities } })
+    ),
 );
 
 export function countriesReducer(state: any, action: any) {

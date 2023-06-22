@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY } from 'rxjs';
-import { map, mergeMap, catchError, tap } from 'rxjs/operators';
-import { LoadDataActionLabel, SaveDataActionLabel } from './actions';
+import { EMPTY, of } from 'rxjs';
+import { map, mergeMap, catchError, switchMap } from 'rxjs/operators';
+import { LoadDataActionLabel, SaveDataActionLabel, setTotalCitiesLabelName, setTotalCountriesLabelName } from './actions';
 import { CountriesService } from '../services/countries.service';
 import { DataRecord } from '../models/state.models';
 
@@ -11,12 +11,20 @@ export class CountriesEffects {
 
     loadCities$ = createEffect(() => this.actions$.pipe(
         ofType(LoadDataActionLabel),
-        tap(() => {
-            console.log('hello')
-        }),
         mergeMap(() => this.countriesService.fetchData()
             .pipe(
-                map((payload: DataRecord[]) => ({ type: SaveDataActionLabel, payload })),
+                switchMap((payload: DataRecord[]) => {
+                    const countries = this.countriesService.reduceData(payload);
+                    const totalCountries = countries.length;
+                    const totalCities = this.countriesService.countCities(countries);
+                    
+                    return of(
+                        ({ type: SaveDataActionLabel, countries }),
+                        ({ type: setTotalCountriesLabelName, totalCountries }),
+                        ({ type: setTotalCitiesLabelName, totalCities }),
+                    )
+                }),
+                catchError(() => EMPTY)
             )
         )
     ));

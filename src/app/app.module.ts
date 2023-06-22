@@ -19,7 +19,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MultiSelectModule,
     StoreModule.forRoot({ countries: countriesReducer }),
-    //EffectsModule.forRoot([CountriesEffects]),
+    EffectsModule.forRoot([CountriesEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

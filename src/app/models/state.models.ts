@@ -5,14 +5,25 @@ export interface DataRecord {
     subcountry: string;
 }
 
-export interface City {
-    geonameid: number;
-    name: string;
+export class City {
     subcountry: string;
+    name: string;
+
+    constructor(data: DataRecord) {
+        this.subcountry = data.subcountry;
+        this.name = data.name;
+    }
 }
 
-export interface Country {
-    cities: City[]
+export type CountryEntity = [string, {cities: City[]}]
+export class Country {
+    cities: City[];
+    name: string;
+
+    constructor(payload: CountryEntity) {
+        this.name = payload[0];
+        this.cities = payload[1].cities;
+    }
 }
 
 export interface TextLabels {
@@ -26,5 +37,7 @@ export interface TextLabels {
 export interface CountriesState {
     labels: TextLabels;
     countries: Country[] | undefined;
+    cities: City[] | undefined;
     selectedCountries: Country[] | undefined;
+    selectedCities: City[] | undefined;
 }

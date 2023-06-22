@@ -1,6 +1,48 @@
-
-<p-multiSelect
-  [options]="cities"
-  [(ngModel)]="selectedCities"
-  optionLabel="name"
-></p-multiSelect>
+<ng-container  *ngIf="data$ | async as data">
+  <div class="wrapp">
+   <div class="labels">
+    Selected Countries: &nbsp;&nbsp; <span>{{data.labels.selectedCountries}}</span>
+    &nbsp;&nbsp; /&nbsp;&nbsp;
+    Total Countries:  &nbsp;&nbsp; <span>{{data.labels.totalCountries}}</span>
+   </div>
+   <br>
+   <br>
+   <div class="labels">
+    Cities Available to Select: &nbsp;&nbsp; <span>{{data.labels.availableCities}}</span>
+    &nbsp;&nbsp; /&nbsp;&nbsp;
+    Total Cites:  &nbsp;&nbsp; <span>{{data.labels.totalCities}}</span>
+   </div>
+   <br>
+   <br>
+   <div class="labels">
+    Selected Cities: &nbsp;&nbsp; <span>{{data.labels.selectedCities}}</span>
+    &nbsp;&nbsp; /&nbsp;&nbsp;
+    Cities Available to Select:  &nbsp;&nbsp; <span>{{data.labels.availableCities}}</span>
+   </div>
+   <br>
+   <br>
+   <div class="labels">
+    Selected Cities: &nbsp;&nbsp; <span>{{data.labels.selectedCities}}</span>
+    &nbsp;&nbsp; /&nbsp;&nbsp;
+    Total Cities:  &nbsp;&nbsp; <span>{{data.labels.totalCities}}</span>
+   </div>
+   <br>
+   <br>
+   <div>
+    Countries:&nbsp;&nbsp; &nbsp;&nbsp;
+    <p-multiSelect 
+      [options]="data.countries"
+      (onChange)="countrySelect($event)"
+      optionLabel="name"></p-multiSelect>
+   </div>
+   <br>
+   <br>
+   <div>
+    Cities:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    <p-multiSelect [disabled]="!data.cities" [options]="data.cities"
+    (onChange)="citySelect($event, data)"
+     optionLabel="name"></p-multiSelect>
+   </div>
+  
+  </div>
+</ng-container>
