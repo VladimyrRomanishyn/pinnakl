@@ -34,7 +34,7 @@ export class CountriesService {
 
   getCities(data: Country[]): City[] {
     return data.reduce((acc, value) => {
-       return acc = acc.concat(value.cities), acc;
+      return acc = acc.concat(value.cities), acc;
     }, [] as City[]);
   }
 }

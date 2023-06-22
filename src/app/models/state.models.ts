@@ -15,7 +15,7 @@ export class City {
     }
 }
 
-export type CountryEntity = [string, {cities: City[]}]
+export type CountryEntity = [string, { cities: City[] }]
 export class Country {
     cities: City[];
     name: string;

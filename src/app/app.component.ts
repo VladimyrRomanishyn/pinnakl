@@ -26,18 +26,18 @@ export class AppComponent implements OnInit {
     const availableCities = this.countriesSvc.countCities(event.value);
     const cities = this.countriesSvc.getCities(event.value);
 
-    this.store.dispatch(updateSelectedCities({selectedCities: []}));
-    this.store.dispatch(setSelectedCitiesLabel({selectedCities: 0}));
-    this.store.dispatch(updateSelectedCountries({selectedCountries: event.value}));
-    this.store.dispatch(setSelectedCountriesLabel({selectedCountries: event.value.length || 0}));
-    this.store.dispatch(setAvailableCitiesLabel({availableCities}));
-    this.store.dispatch(updateCities({cities}));
+    this.store.dispatch(updateSelectedCities({ selectedCities: [] }));
+    this.store.dispatch(setSelectedCitiesLabel({ selectedCities: 0 }));
+    this.store.dispatch(updateSelectedCountries({ selectedCountries: event.value }));
+    this.store.dispatch(setSelectedCountriesLabel({ selectedCountries: event.value.length || 0 }));
+    this.store.dispatch(setAvailableCitiesLabel({ availableCities }));
+    this.store.dispatch(updateCities({ cities }));
   }
 
   citySelect(event: MultiSelectChangeEvent, data: CountriesState): void {
-    this.store.dispatch(updateSelectedCities({selectedCities: event.value}));
-    this.store.dispatch(setSelectedCitiesLabel({selectedCities: event.value.length || 0}));
-    this.store.dispatch(setAvailableCitiesLabel({availableCities: (data.cities?.length || 0) - event.value.length}));
+    this.store.dispatch(updateSelectedCities({ selectedCities: event.value }));
+    this.store.dispatch(setSelectedCitiesLabel({ selectedCities: event.value.length || 0 }));
+    this.store.dispatch(setAvailableCitiesLabel({ availableCities: (data.cities?.length || 0) - event.value.length }));
   }
 
   ngOnInit(): void {
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
           if (!state.countries) {
             this.store.dispatch(loadData())
           }
-          return !!state.countries; 
+          return !!state.countries;
         })
       );
   }

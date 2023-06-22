@@ -17,7 +17,7 @@ export class CountriesEffects {
                     const countries = this.countriesService.reduceData(payload);
                     const totalCountries = countries.length;
                     const totalCities = this.countriesService.countCities(countries);
-                    
+
                     return of(
                         ({ type: SaveDataActionLabel, countries }),
                         ({ type: setTotalCountriesLabelName, totalCountries }),
