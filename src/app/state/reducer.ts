@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { CountriesState } from '../models/state.models';
+import { CountriesState } from '../core/src/models/country.models';
 import * as actions from './actions';
 
 export const initialState: CountriesState = {
@@ -10,8 +10,8 @@ export const initialState: CountriesState = {
         totalCities: 0,
         selectedCities: 0
     },
-    countries: undefined,
-    cities: undefined,
+    countries: [],
+    cities: [],
     selectedCountries: [],
     selectedCities: []
 };

@@ -30,14 +30,15 @@
     <br>
     <div>
       Countries:&nbsp;&nbsp; &nbsp;&nbsp;
-      <p-multiSelect [options]="data.countries" (onChange)="countrySelect($event)" optionLabel="name"></p-multiSelect>
+      <p-multiSelect [showToggleAll]="false" [options]="data.countries" (onChange)="countrySelect($event)"
+        optionLabel="name"></p-multiSelect>
     </div>
     <br>
     <br>
     <div>
       Cities:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-      <p-multiSelect [disabled]="!data.cities" [options]="data.cities" (onChange)="citySelect($event, data)"
-        optionLabel="name"></p-multiSelect>
+      <p-multiSelect [showToggleAll]="false" [disabled]="!data.cities" [options]="data.cities"
+        (onChange)="citySelect($event)" optionLabel="name"></p-multiSelect>
     </div>
 
   </div>

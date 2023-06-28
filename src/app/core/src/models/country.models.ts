@@ -40,4 +40,4 @@ export interface CountriesState {
     cities: City[] | undefined;
     selectedCountries: Country[] | undefined;
     selectedCities: City[] | undefined;
-}
+} 
