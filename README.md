@@ -12,5 +12,5 @@ Num of selected cities / total cities in response.
 Details:
 Text labels should update in the real time from multi-select selection (and no buttons)
 UI is not so important as code.
-If you find the task to be easy, and you want do more you can add possibility to manage list of countries, cities; use any storage or do any other improvements and additions which you think can display your talents
+
 You are free to use any libs/packages/sandboxes etc
